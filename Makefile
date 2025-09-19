@@ -1,8 +1,9 @@
 install:
-	brew install colima
+	@HOMEBREW_NO_AUTO_UPDATE=1 brew install colima
+	@brew pin colima
 
-start: prepare
-	colima start
+start: install prepare
+	@colima start
 
 prepare:
-	mkdir -p ~/.colima/default; cp ~/.config/colima/colima.yaml ~/.colima/default/colima.yaml
+	@mkdir -p ~/.colima/default; envsubst < colima.tpl > ~/.colima/default/colima.yaml

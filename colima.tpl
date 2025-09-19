@@ -164,16 +164,16 @@ cpuType: host
 provision:
   - mode: system
     script: |
-      # Can run any system level scripts here using <mountPoint>/<repositoryPath>/<scriptName>.sh (e.g: /tmp/scripts/system.sh)
-      bash /tmp/colima/system.sh
+      # Can run any system level scripts here using <mountPoint>/<repositoryPath>/<scriptName>.sh (e.g: /tmp/config/scripts/system.sh)
+      bash /tmp/config/scripts/system.sh
   - mode: user
     script: |
-      bash /tmp/colima/user.sh
+      bash /tmp/config/scripts/user.sh
 
 # Modify ~/.ssh/config automatically to include a SSH config for the virtual machine.
 # SSH config will still be generated in $COLIMA_HOME/ssh_config regardless.
 # Default: true
-sshConfig: true
+sshConfig: false
 
 # The port number for the SSH server for the virtual machine.
 # When set to 0, a random available port is used.
@@ -196,7 +196,7 @@ sshPort: 2022
 # Default: []
 mounts:
 - location: ~/.config/colima # This is location of this repository
-  mountPoint: /tmp # This is where the repository will be mounted on the VM
+  mountPoint: /tmp/config # This is where the repository will be mounted on the VM
 
 # Environment variables for the virtual machine.
 #
